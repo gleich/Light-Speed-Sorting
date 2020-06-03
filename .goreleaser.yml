@@ -1,7 +1,7 @@
 release:
   github:
     owner: Matt-Gleich
-    name: goTemplate
+    name: light-speed-sorting
   prerelease: auto
 before:
   hooks:
@@ -24,7 +24,7 @@ brews:
       name: homebrew-taps
     folder: Formula
     homepage: 'https://mattglei.ch'
-    description: 'goTemplate'
+    description: '📂 Blazing fast file sorting'
     commit_author:
       name: Matt-Gleich
       email: matthewgleich@gmail.com
