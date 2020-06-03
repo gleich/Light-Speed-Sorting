@@ -10,8 +10,15 @@ import (
 
 // GetFiles ... Get all files recursively
 func GetFiles() []string {
+	var location string = "."
+
+	_, err := os.Stat("new-files")
+	if !os.IsNotExist(err) {
+		location = "./new-files"
+	}
+
 	filePaths := []string{}
-	err := filepath.Walk(".", func(path string, _ os.FileInfo, err error) error {
+	err = filepath.Walk(location, func(path string, _ os.FileInfo, err error) error {
 		if err != nil {
 			logrus.Fatal(err)
 		}
