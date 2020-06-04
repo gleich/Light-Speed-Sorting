@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"fmt"
+	"time"
 
 	"github.com/Matt-Gleich/Light-Speed-Sorting/ask"
 	"github.com/Matt-Gleich/Light-Speed-Sorting/files"
@@ -13,8 +13,17 @@ var rootCmd = &cobra.Command{
 	Use:   "light-speed-sorting",
 	Short: "Blazing fast file sorting",
 	Run: func(cmd *cobra.Command, args []string) {
-		ask.OSBirthTime(cmd, args)
-		fmt.Println(files.GetFiles())
+		continuous, err := cmd.Flags().GetBool("continuous")
+		if err != nil {
+			logrus.Fatal(err)
+		}
+		if continuous {
+			for {
+				run(cmd, args)
+				time.Sleep(30 * time.Second)
+			}
+		}
+		run(cmd, args)
 	},
 }
 
@@ -26,6 +35,11 @@ func Execute() {
 }
 
 func init() {
-	rootCmd.Flags().Bool("no-out", true, "Show no stdout except for errors")
 	rootCmd.Flags().BoolP("continuous", "c", true, "Run the sorter every 30 seconds")
+}
+
+func run(cmd *cobra.Command, args []string) {
+	ask.OSBirthTime(cmd, args)
+	projectFiles := files.GetFiles()
+	files.MoveFiles(projectFiles)
 }

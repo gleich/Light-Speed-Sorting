@@ -15,6 +15,6 @@ require (
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/spf13/viper v1.7.0
 	golang.org/x/sys v0.0.0-20200602225109-6fdc65e7d980 // indirect
-	gopkg.in/djherbis/times.v1 v1.2.0 // indirect
+	gopkg.in/djherbis/times.v1 v1.2.0
 	gopkg.in/ini.v1 v1.57.0 // indirect
 )
