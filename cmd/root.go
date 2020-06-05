@@ -22,8 +22,9 @@ var rootCmd = &cobra.Command{
 				run(cmd, args)
 				time.Sleep(30 * time.Second)
 			}
+		} else {
+			run(cmd, args)
 		}
-		run(cmd, args)
 	},
 }
 
@@ -35,7 +36,7 @@ func Execute() {
 }
 
 func init() {
-	rootCmd.Flags().BoolP("continuous", "c", true, "Run the sorter every 30 seconds")
+	rootCmd.Flags().BoolP("continuous", "c", false, "Run the sorter every 30 seconds")
 }
 
 func run(cmd *cobra.Command, args []string) {
