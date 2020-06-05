@@ -1,7 +1,7 @@
 release:
   github:
     owner: Matt-Gleich
-    name: light-speed-sorting
+    name: Light-Speed-Sorting
   prerelease: auto
 before:
   hooks:

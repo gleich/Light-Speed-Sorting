@@ -1,10 +1,36 @@
-# goTemplate
+# Light-Speed-Sorting
 
-## Fill In
+Take all of your files sort them into folders based off the year, month, and day that they were created. Written in golang so its super fast.
 
-1. [go.mod](./go.mod) (Name of module)
-2. [.goreleaser.yml](./.goreleaser.yml) (Brew description)
+## 📂 Example
 
-## Contributors
+### Before
 
-1. Matthew Gleich ([Matt-Gleich]("http://www.github.com/Matt-Gleich"))
+```
+.
+└── file.txt
+```
+
+### After
+
+```
+.
+└── 2020
+    └── June
+        └── Thursday-4th
+            └── file.txt
+```
+
+## 🚀 Install
+
+### Golang
+
+`go get github.com/Matt-Gleich/Light-Speed-Sorting`
+
+### Homebrew (MacOS or Linux)
+
+`brew install Matt-Gleich/homebrew-taps/light-speed-sorting`
+
+## Usage
+
+Just run `light-speed-sorting` to sort the current directory. Run `light-speed-sorting --help` for more information.
