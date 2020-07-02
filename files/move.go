@@ -6,7 +6,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/sirupsen/logrus"
+	"github.com/Matt-Gleich/statuser/v2"
 	"gopkg.in/djherbis/times.v1"
 )
 
@@ -15,13 +15,14 @@ func MoveFiles(files []string) {
 	os.Mkdir("TEMPFILESTORAGE", os.ModePerm)
 	for _, file := range files {
 		fileName := strings.Split(file, "/")[len(strings.Split(file, "/"))-1]
-		err := os.Rename(file, "./TEMPFILESTORAGE/"+fileName)
+		tempStorage := "./TEMPFILESTORAGE/" + fileName
+		err := os.Rename(file, tempStorage)
 		if err != nil {
-			logrus.Fatal(err)
+			statuser.Error("Failed move file", err, 1)
 		}
-		t, err := times.Stat("./TEMPFILESTORAGE/" + fileName)
+		t, err := times.Stat(tempStorage)
 		if err != nil {
-			logrus.Error(err)
+			statuser.Error("Failed to get status for "+tempStorage, err, 1)
 		}
 		var fileTime time.Time
 		if t.HasBirthTime() {

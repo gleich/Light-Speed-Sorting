@@ -5,7 +5,7 @@ import (
 
 	"github.com/Matt-Gleich/Light-Speed-Sorting/ask"
 	"github.com/Matt-Gleich/Light-Speed-Sorting/files"
-	"github.com/sirupsen/logrus"
+	"github.com/Matt-Gleich/statuser/v2"
 	"github.com/spf13/cobra"
 )
 
@@ -15,7 +15,7 @@ var rootCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		continuous, err := cmd.Flags().GetBool("continuous")
 		if err != nil {
-			logrus.Fatal(err)
+			statuser.Error("Failed to get 'continuous' flag", err, 1)
 		}
 		if continuous {
 			for {
@@ -31,7 +31,7 @@ var rootCmd = &cobra.Command{
 // Execute ... Execute root command
 func Execute() {
 	if err := rootCmd.Execute(); err != nil {
-		logrus.Fatal(err)
+		statuser.Error("Failed to execute root command", err, 1)
 	}
 }
 
